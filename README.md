@@ -11,6 +11,9 @@
 
 [**Live Demo**](#-live-demo) • [**Features**](#-key-features) • [**Architecture**](#-architecture) • [**Quick Start**](#-quick-start) • [**Tech Stack**](#-tech-stack) • [**Screenshots**](#-dashboard-screenshots)
 
+![alt text](image.png)
+![alt text](image-1.png)
+
 ---
 
 ## 🎯 Project Overview

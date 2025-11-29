@@ -142,7 +142,7 @@ def get_dashboard_metrics():
     return metrics
 
 
-@app.get("/api/v1/transactions/recent", response_model=List[Transaction])
+@app.get("/api/v1/transactions/latest", response_model=List[Transaction])
 def get_recent_transactions(limit: int = Query(50, le=100)):
     """Get recent transactions"""
 
@@ -212,7 +212,7 @@ def get_transaction_detail(transaction_id: str):
     }
 
 
-@app.get("/api/v1/transactions/hourly")
+@app.get("/api/v1/transactions/stats/hourly")
 def get_hourly_transactions(hours: int = Query(24, le=168)):
     """Get transaction counts by hour"""
 
@@ -232,7 +232,7 @@ def get_hourly_transactions(hours: int = Query(24, le=168)):
             SUM(send_amount) as volume,
             AVG(fraud_score) as avg_fraud_score
         FROM transactions
-        WHERE timestamp > NOW() - INTERVAL '%s hours'
+        WHERE timestamp > NOW() - INTERVAL '1 hour' * %s
         GROUP BY hour
         ORDER BY hour
     """, (hours,))
@@ -242,7 +242,7 @@ def get_hourly_transactions(hours: int = Query(24, le=168)):
     cursor.close()
     conn.close()
 
-    result = {"hourly_data": hourly_data}
+    result = {"hourly_data": hourly_data or []}
 
     # Cache for 1 minute
     redis_client.setex(cache_key, 60, json.dumps(result, default=str))

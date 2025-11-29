@@ -28,8 +28,8 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .alert-high {
-        background-color: #ffebee;
-        border-left: 4px solid #f44336;
+        background-color: #f44336;
+        border-left: 4px solid  #ffebee;
         padding: 10px;
         margin: 5px 0;
     }
@@ -167,7 +167,7 @@ with placeholder.container():
 
         # Fetch hourly data
         hourly_data = fetch_api(
-            "/api/v1/transactions/hourly", params={"hours": 24})
+            "/api/v1/transactions/stats/hourly", params={"hours": 24})
 
         if hourly_data and hourly_data.get('hourly_data'):
             df_hourly = pd.DataFrame(hourly_data['hourly_data'])
@@ -316,7 +316,7 @@ with placeholder.container():
     st.subheader("📋 Recent Transactions")
 
     transactions_data = fetch_api(
-        "/api/v1/transactions/recent", params={"limit": 20})
+        "/api/v1/transactions/latest", params={"limit": 20})
 
     if transactions_data and isinstance(transactions_data, list):
         df_transactions = pd.DataFrame(transactions_data)
