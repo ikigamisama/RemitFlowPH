@@ -1,0 +1,7 @@
+streamlit
+pandas
+plotly
+requests
+streamlit-autorefresh
+altair
+pydeck

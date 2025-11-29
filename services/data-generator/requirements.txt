@@ -1,0 +1,5 @@
+kafka-python
+psycopg2-binary
+synthetic-data-crafter
+python-dotenv
+forex-python
