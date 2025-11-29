@@ -517,6 +517,12 @@ class TransactionGenerator:
                     "group": "advanced",
                     "options": {'func': lambda: agent['name']}
                 },
+                {
+                    "label": 'branch_code',
+                    "key_label": "lambda",
+                    "group": "advanced",
+                    "options": {'func': lambda: f"{origin_city[:3].upper()}_{random.randint(1, 9):03d}"}
+                },
             ],
             'device_info': [
                 {
