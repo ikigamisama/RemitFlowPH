@@ -19,6 +19,8 @@ POSTGRES_CONFIG = {
 }
 GENERATION_RATE = int(os.getenv('GENERATION_RATE', '10'))
 
+rates = CurrencyRates().get_rates('PHP')
+
 ORIGIN_COUNTRIES = {
     'Israel': ['Tel Aviv', 'Jerusalem', 'Haifa'],
     'Singapore': ['Singapore'],
@@ -120,79 +122,79 @@ AGENTS = [
 
 CURRENCY_MAP = [
     {'country_name': 'Israel', 'symbol': 'ILS',
-        'value': CurrencyRates().get_rates('PHP')['ILS']},
+        'value': rates['ILS']},
     {'country_name': 'Singapore', 'symbol': 'SGD',
-        'value': CurrencyRates().get_rates('PHP')['SGD']},
+        'value': rates['SGD']},
     {'country_name': 'Hong Kong', 'symbol': 'HKD',
-        'value': CurrencyRates().get_rates('PHP')['HKD']},
+        'value': rates['HKD']},
     {'country_name': 'Japan', 'symbol': 'JPY',
-        'value': CurrencyRates().get_rates('PHP')['JPY']},
+        'value': rates['JPY']},
     {'country_name': 'South Korea', 'symbol': 'KRW',
-        'value': CurrencyRates().get_rates('PHP')['KRW']},
+        'value': rates['KRW']},
     {'country_name': 'Malaysia', 'symbol': 'MYR',
-        'value': CurrencyRates().get_rates('PHP')['MYR']},
+        'value': rates['MYR']},
     {'country_name': 'USA', 'symbol': 'USD',
-        'value': CurrencyRates().get_rates('PHP')['USD']},
+        'value': rates['USD']},
     {'country_name': 'Canada', 'symbol': 'CAD',
-        'value': CurrencyRates().get_rates('PHP')['CAD']},
+        'value': rates['CAD']},
     {'country_name': 'United Kingdom', 'symbol': 'GBP',
-        'value': CurrencyRates().get_rates('PHP')['GBP']},
+        'value': rates['GBP']},
 
     # European Union (EUR)
     {'country_name': 'Italy', 'symbol': 'EUR',
-        'value': CurrencyRates().get_rates('PHP')['EUR']},
+        'value': rates['EUR']},
     {'country_name': 'Germany', 'symbol': 'EUR',
-        'value': CurrencyRates().get_rates('PHP')['EUR']},
+        'value': rates['EUR']},
     {'country_name': 'Spain', 'symbol': 'EUR',
-        'value': CurrencyRates().get_rates('PHP')['EUR']},
+        'value': rates['EUR']},
     {'country_name': 'France', 'symbol': 'EUR',
-        'value': CurrencyRates().get_rates('PHP')['EUR']},
+        'value': rates['EUR']},
     {'country_name': 'Netherlands', 'symbol': 'EUR',
-        'value': CurrencyRates().get_rates('PHP')['EUR']},
+        'value': rates['EUR']},
 
     # Scandinavia
     {'country_name': 'Norway', 'symbol': 'NOK',
-        'value': CurrencyRates().get_rates('PHP')['NOK']},
+        'value': rates['NOK']},
     {'country_name': 'Sweden', 'symbol': 'SEK',
-        'value': CurrencyRates().get_rates('PHP')['SEK']},
+        'value': rates['SEK']},
     {'country_name': 'Denmark', 'symbol': 'DKK',
-        'value': CurrencyRates().get_rates('PHP')['DKK']},
+        'value': rates['DKK']},
 
     # Others available in ForexPython
     {'country_name': 'Australia', 'symbol': 'AUD',
-        'value': CurrencyRates().get_rates('PHP')['AUD']},
+        'value': rates['AUD']},
     {'country_name': 'New Zealand', 'symbol': 'NZD',
-        'value': CurrencyRates().get_rates('PHP')['NZD']},
+        'value': rates['NZD']},
     {'country_name': 'South Africa', 'symbol': 'ZAR',
-        'value': CurrencyRates().get_rates('PHP')['ZAR']},
+        'value': rates['ZAR']},
     {'country_name': 'Brazil', 'symbol': 'BRL',
-        'value': CurrencyRates().get_rates('PHP')['BRL']},
+        'value': rates['BRL']},
 
     # NEW additions (supported currencies)
     {'country_name': 'China', 'symbol': 'CNY',
-        'value': CurrencyRates().get_rates('PHP')['CNY']},
+        'value': rates['CNY']},
     {'country_name': 'India', 'symbol': 'INR',
-        'value': CurrencyRates().get_rates('PHP')['INR']},
+        'value': rates['INR']},
     {'country_name': 'Mexico', 'symbol': 'MXN',
-        'value': CurrencyRates().get_rates('PHP')['MXN']},
+        'value': rates['MXN']},
     {'country_name': 'Thailand', 'symbol': 'THB',
-        'value': CurrencyRates().get_rates('PHP')['THB']},
+        'value': rates['THB']},
     {'country_name': 'Switzerland', 'symbol': 'CHF',
-        'value': CurrencyRates().get_rates('PHP')['CHF']},
+        'value': rates['CHF']},
     {'country_name': 'Czech Republic', 'symbol': 'CZK',
-        'value': CurrencyRates().get_rates('PHP')['CZK']},
+        'value': rates['CZK']},
     {'country_name': 'Hungary', 'symbol': 'HUF',
-        'value': CurrencyRates().get_rates('PHP')['HUF']},
+        'value': rates['HUF']},
     {'country_name': 'Poland', 'symbol': 'PLN',
-        'value': CurrencyRates().get_rates('PHP')['PLN']},
+        'value': rates['PLN']},
     {'country_name': 'Romania', 'symbol': 'RON',
-        'value': CurrencyRates().get_rates('PHP')['RON']},
+        'value': rates['RON']},
     {'country_name': 'Iceland', 'symbol': 'ISK',
-        'value': CurrencyRates().get_rates('PHP')['ISK']},
+        'value': rates['ISK']},
     {'country_name': 'Turkey', 'symbol': 'TRY',
-        'value': CurrencyRates().get_rates('PHP')['TRY']},
+        'value': rates['TRY']},
     {'country_name': 'Indonesia', 'symbol': 'IDR',
-        'value': CurrencyRates().get_rates('PHP')['IDR']},
+        'value': rates['IDR']},
 ]
 
 
@@ -341,13 +343,6 @@ class TransactionGenerator:
                     "group": "advanced",
                     "options": {'func': lambda: 'remittance_completed' if status == 'completed' else 'remittance_initiated'}
                 },
-
-                {
-                    "label": 'completion_timestamp',
-                    "key_label": "lambda",
-                    "group": "advanced",
-                    "options": {'func': lambda: (timestamp + timedelta(milliseconds=processing_time)).isoformat() if status == 'completed' else None}
-                },
                 {
                     "label": 'status',
                     "key_label": "lambda",
@@ -365,6 +360,12 @@ class TransactionGenerator:
                     "key_label": "lambda",
                     "group": "advanced",
                     "options": {'func': lambda: (timestamp + timedelta(milliseconds=processing_time)).isoformat() if status == 'completed' else None}
+                },
+                {
+                    "label": 'failure_reason',
+                    "key_label": "lambda",
+                    "group": "advanced",
+                    "options": {'func': lambda: 'Insufficient funds' if status == 'failed' else None}
                 },
                 {
                     "label": 'fraud_score',
@@ -595,38 +596,54 @@ class TransactionGenerator:
             print(f"Failed to send to Kafka: {e}")
             return False
 
+    def parse_iso_timestamp(self, ts_str):
+        if ts_str is None:
+            return None
+        ts_str = ts_str.replace(
+            "Z", "+00:00") if ts_str.endswith("Z") else ts_str
+        return datetime.fromisoformat(ts_str)
+
     def save_to_postgres(self, transaction):
         try:
             cursor = self.conn.cursor()
+
+            ts = self.parse_iso_timestamp(transaction['timestamp'])
+            completion_ts = None
+            if transaction.get('completion_timestamp'):
+                completion_ts = self.parse_iso_timestamp(
+                    transaction.get('completion_timestamp'))
 
             sql = """
                 INSERT INTO transactions (
                     transaction_id, timestamp, event_type,
                     sender_id, sender_name, sender_phone, sender_email, sender_kyc_level, sender_customer_since,
-                    recipient_id, recipient_name, recipient_phone, recipient_relationship, 
-                    recipient_account_number, recipient_account_type,
-                    send_amount, send_currency, receive_amount, receive_currency, 
-                    exchange_rate, fees, total_deducted,
+                    recipient_id, recipient_name, recipient_phone, recipient_relationship, recipient_account_number, recipient_account_type,
+                    send_amount, send_currency, receive_amount, receive_currency, exchange_rate, fees, total_deducted,
                     origin_country, origin_city, origin_region,
                     dest_country, dest_province, dest_city, dest_barangay, dest_region,
                     channel_id, channel_name, channel_type, agent_id, agent_name, branch_code,
                     status, processing_time_ms, completion_timestamp, failure_reason,
                     fraud_score, fraud_flags, risk_level, is_flagged, verification_required,
                     device_type, device_id, ip_address, user_agent, session_id, correlation_id, source_system
-                ) VALUES (
-                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                )
+                VALUES (
+                    %s, %s, %s,
+                    %s, %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s,
                     %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s,
                     %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s
                 )
-            """
-
+                """
+            print("DEBUG: inserting transaction:",
+                  json.dumps(transaction, default=str))
             cursor.execute(sql, (
                 transaction['transaction_id'],
-                transaction['timestamp'],
+                ts,
                 transaction['event_type'],
                 transaction['sender']['sender_id'],
                 transaction['sender']['sender_name'],
@@ -638,7 +655,7 @@ class TransactionGenerator:
                 transaction['recipient']['recipient_name'],
                 transaction['recipient']['recipient_phone'],
                 transaction['recipient']['relationship'],
-                transaction['recipient']['account_number'],
+                str(transaction['recipient']['account_number']),
                 transaction['recipient']['account_type'],
                 transaction['amount']['send_amount'],
                 transaction['amount']['send_currency'],
@@ -663,7 +680,7 @@ class TransactionGenerator:
                 transaction['channel']['branch_code'],
                 transaction['status'],
                 transaction['processing_time_ms'],
-                transaction['completion_timestamp'],
+                completion_ts,
                 transaction['failure_reason'],
                 transaction['fraud_score'],
                 json.dumps(transaction['fraud_flags']),
